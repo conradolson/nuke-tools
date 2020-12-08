@@ -1,10 +1,10 @@
 # --------------------------------------------------------------
 #  aovCompare.py
-#  Version: 1.0
+#  Version: 1.0.1
 #  Author: Conrad Olson
 #
 #  Last Modified by: Conrad Olson
-#  Last Updated: Dec 2nd, 2020
+#  Last Updated: Dec 7th, 2020
 # --------------------------------------------------------------
 
 import nuke
@@ -53,7 +53,7 @@ def aovCompare():
         difference1 = [x for x in layers1 if x not in s]
         if len(difference1) != 0:
             message = message + file1
-            message = message + ' has the following AVOs that are not in '
+            message = message + ' has the following AOVs that are not in '
             message = message + file2
             message = message + ': \n \n'
             message = message + ', '.join(difference1)
