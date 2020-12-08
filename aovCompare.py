@@ -63,7 +63,7 @@ def aovCompare():
         difference2 = [x for x in layers2 if x not in s]
         if len(difference2) != 0:
             message = message + file2
-            message = message + ' has the follwong AVOs that are not in '
+            message = message + ' has the follwong AOVs that are not in '
             message = message + file1
             message = message +': \n \n'
             message = message + ', '.join(difference2)
