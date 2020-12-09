@@ -1,10 +1,10 @@
 # --------------------------------------------------------------
 #  aovCompare.py
-#  Version: 1.0.1
+#  Version: 1.0.2
 #  Author: Conrad Olson
 #
 #  Last Modified by: Conrad Olson
-#  Last Updated: Dec 7th, 2020
+#  Last Updated: Dec 9th, 2020
 # --------------------------------------------------------------
 
 import nuke
@@ -25,6 +25,7 @@ def checkSelection(checkThis):
 
 def aovCompare():
     selection = nuke.selectedNodes()
+    selection.sort()
     # run the checkSelection function to confirm that we have two read nodes selected
     if checkSelection(selection) is False:
         nuke.message('Select 2 read nodes')
@@ -48,7 +49,6 @@ def aovCompare():
         # get the layers that are in node1 but not in node2
         file1 = os.path.basename(node1['file'].value())
         file2 = os.path.basename(node2['file'].value())
-        print file1
         s = set(layers2)
         difference1 = [x for x in layers1 if x not in s]
         if len(difference1) != 0:
@@ -57,11 +57,11 @@ def aovCompare():
             message = message + file2
             message = message + ': \n \n'
             message = message + ', '.join(difference1)
-            message = message + '\n \n -------- \n \n'
         # get the layers that are in node2 but are not in node1
         s = set(layers1)
         difference2 = [x for x in layers2 if x not in s]
         if len(difference2) != 0:
+            message = message + '\n \n -------- \n \n'
             message = message + file2
             message = message + ' has the follwong AOVs that are not in '
             message = message + file1
@@ -69,6 +69,7 @@ def aovCompare():
             message = message + ', '.join(difference2)
         nuke.message(message)
         print message
+        print '\n'
 
 
 # add to Utilities menu
