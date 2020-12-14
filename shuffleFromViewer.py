@@ -1,10 +1,10 @@
 # --------------------------------------------------------------
 #  shuffleFromViewer.py
-#  Version: 1
+#  Version: 1.0.1
 #  Author: Conrad Olson
 #
 #  Last Modified by: Conrad Olson
-#  Last Updated: November 17th, 2020
+#  Last Updated: Dec 14th, 2020
 # --------------------------------------------------------------
 
 """
@@ -26,6 +26,9 @@ def shuffleFromViewer():
             shuffle = nuke.createNode('Shuffle')
             shuffle['in'].setValue(viewed)
             shuffle['label'].setValue('[value in]')
+
+        #this following line sets the viewer back to RGBA after the shuffle is creates if thats what you want
+        #nuke.activeViewer().node()['channels'].setValue('rgba')
 
     #get the channels currently being viewed
     viewed = nuke.activeViewer().node()['channels'].value()
